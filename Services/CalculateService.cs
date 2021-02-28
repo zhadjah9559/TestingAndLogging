@@ -8,7 +8,7 @@ namespace TestingAndLogging.Services
 {
     public class CalculateService : ICalculateService
     {
-        public async Task<IEnumerable<int>> CalculateFibonacciAsync(Fibonacci model)
+        public IEnumerable<int> CalculateFibonacci(Fibonacci model)
         {
             List<int> returnList = new List<int>(model.Input);
             int num1 = 0;
@@ -28,22 +28,39 @@ namespace TestingAndLogging.Services
                 num1 = num2;
                 num2 = num3;
 
-                if(i >= 3)
-                {
-                    returnList.Add(num3);
-                }
+                returnList.Add(num3);
             }
             return returnList;
         }
 
-        public Task<int> CalculatePythagoreanTheoremAsync()
+        public void CalculatePythagoreanTheorem(Pythagorean model)
         {
-            throw new NotImplementedException();
+            model.InputA = Convert.ToDouble(model.InputA);
+            model.InputB = Convert.ToDouble(model.InputB);
+
+            double cSquared = model.InputA * model.InputA + model.InputB * model.InputB;
+
+            model.OutputC = Math.Sqrt(cSquared);
         }
 
-        public Task<IEnumerable<double>> CalculateStandardDeviationAsync()
+        public void ConvertInputStringToListOfDoubles(StandardDeviation model)
         {
-            throw new NotImplementedException();
+            string[] doubles = model.InputString.Split(',');
+
+            foreach(var double in doubles)
+            {
+                
+            }
+
+            model.InputNumbers.AddRange(model.InputString.Split(',').ToList());
+        }
+
+        public void CalculateStandardDeviation(StandardDeviation model)
+        {
+            double avg = model.InputNumbers.Average();
+            double sum = model.InputNumbers.Sum(v => (v - avg) * (v - avg));
+            double denominator = model.InputNumbers.Count - 1;
+            model.Output = denominator > 0.0 ? Math.Sqrt(sum / denominator) : -1;
         }
     }
 }

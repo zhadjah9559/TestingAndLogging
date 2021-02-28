@@ -7,9 +7,9 @@ namespace TestingAndLogging.Models
 {
     public class Pythagorean
     {
-        public int InputA { get; set; }
-        public int InputB { get; set; }
-        public int OutputC { get; set; }
+        public double InputA { get; set; }
+        public double InputB { get; set; }
+        public double OutputC { get; set; }
 
     }
 }

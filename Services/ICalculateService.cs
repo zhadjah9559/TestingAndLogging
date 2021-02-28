@@ -8,10 +8,14 @@ namespace TestingAndLogging.Services
 {
     public interface ICalculateService
     {
-        public Task<IEnumerable<int>> CalculateFibonacciAsync(Fibonacci model);
+        public IEnumerable<int> CalculateFibonacci(Fibonacci model);
 
-        public Task<int> CalculatePythagoreanTheoremAsync();     
+        //Encapsulated Method
+        public void CalculatePythagoreanTheorem(Pythagorean model);
 
-        public Task<IEnumerable<double>> CalculateStandardDeviationAsync();
+        public void ConvertInputStringToListOfDoubles(StandardDeviation model);
+
+        //Encapsulated method
+        public void CalculateStandardDeviation(StandardDeviation model);
     }
 }

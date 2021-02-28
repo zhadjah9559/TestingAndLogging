@@ -1,15 +1,31 @@
-﻿
+﻿@model StandardDeviation 
 @{
     ViewData["Title"] = "StandardDeviation";
 }
 
 
-<!--CalculateStandardDeviation-->
-<div class="offset-2 col-8">
-    <div class="card bg-primary">
+<div class="row">
+    <div class="offset-2 col-8">
 
+        <p class="justify-content-center">Please provide numbers separated by comma to calculate the standard deviation</p>
 
+        <div class="card bg-primary">
+            <form asp-controller="Home" asp-action="StandardDeviation">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <textarea asp-for="InputString" class="form-control" placeholder="Enter numbers separated by commas" />
+                    <span asp-validation-for="InputString" class="text-danger"></span>
+                </div>
 
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <br />
+
+                <p>@Model.Output</p>
+            </form>
+        </div>
     </div>
 </div>
+
+
 

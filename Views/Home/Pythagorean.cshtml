@@ -1,17 +1,33 @@
-﻿
+﻿@model Pythagorean 
 @{
     ViewData["Title"] = "Pythagorean";
 }
 
+<div class="row">
+    <div class="offset-2 col-8">
+        <div class="card bg-primary">
+            <form asp-controller="Home" asp-action="Pythagorean">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="InputA" class="control-label">Enter A</label>
+                    <input asp-for="InputA" class="form-control" />
+                    <span asp-validation-for="InputA" class="text-danger"></span>
+                </div>
 
-<!--CalculatePythagoreanTheorem-->
-<div class="offset-2 col-8">
-    <div class="card bg-primary">
+                <div class="form-group">
+                    <label asp-for="InputB" class="control-label">Enter B</label>
+                    <input asp-for="InputB" class="form-control" />
+                    <span asp-validation-for="InputB" class="text-danger"></span>
+                </div>
 
+                <button type="submit" class="btn btn-primary">Submit</button>
 
+                <br />
 
+                <p>@Model.OutputC</p>
+            </form>
+        </div>
     </div>
 </div>
-
 
 

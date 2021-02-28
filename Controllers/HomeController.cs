@@ -35,33 +35,39 @@ namespace TestingAndLogging.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Fibonacci(Fibonacci model)
+        public IActionResult Fibonacci(Fibonacci model)
         {
-            model.Output = (List<int>)await _calculateService.CalculateFibonacciAsync(model);
+            model.Output = (List<int>) _calculateService.CalculateFibonacci(model);
             return View(model);
         }
 
         public IActionResult Pythagorean()
         {
-            return View();
+            var model = new Pythagorean();
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Pythagorean(Pythagorean model)
+        public IActionResult Pythagorean(Pythagorean model)
         {
+            _calculateService.CalculatePythagoreanTheorem(model);
             return View(model);
         }
 
         public IActionResult StandardDeviation()
         {
-            return View();
+            var model = new StandardDeviation();
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> StandardDeviation(StandardDeviation model)
+        public IActionResult StandardDeviation(StandardDeviation model)
         {
+            _calculateService.ConvertInputStringToListOfDoubles(model);
+
+            _calculateService.CalculateStandardDeviation(model);
             return View(model);
         }
 
