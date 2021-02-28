@@ -47,12 +47,10 @@ namespace TestingAndLogging.Services
         {
             string[] doubles = model.InputString.Split(',');
 
-            foreach(var double in doubles)
+            foreach(var item in doubles)
             {
-                
+                model.InputNumbers.Add(Double.Parse(item));
             }
-
-            model.InputNumbers.AddRange(model.InputString.Split(',').ToList());
         }
 
         public void CalculateStandardDeviation(StandardDeviation model)

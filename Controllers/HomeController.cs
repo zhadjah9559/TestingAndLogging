@@ -66,7 +66,6 @@ namespace TestingAndLogging.Controllers
         public IActionResult StandardDeviation(StandardDeviation model)
         {
             _calculateService.ConvertInputStringToListOfDoubles(model);
-
             _calculateService.CalculateStandardDeviation(model);
             return View(model);
         }
