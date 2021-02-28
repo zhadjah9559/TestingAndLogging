@@ -1,0 +1,56 @@
+﻿@model TestingAndLogging.Models.Fibonacci 
+@{
+    ViewData["Title"] = "Fibonacci";
+}
+
+<div class="row">
+    <div class="offset-2 col-8">
+
+
+        <div class="card bg-primary">
+            <p>Enter num of Entries</p>
+            <form asp-controller="Home" asp-action="Fibonacci">
+                <input type="number" asp-for="Input" placeholder="Entries" />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <br />
+            <br />
+
+            <table class="table table-striped justifiy-content-center" style="background-color: steelblue;">
+                <thead>
+                    <tr><th colspan="5">Fibonacci Series Results</th></tr>
+                </thead>
+                <tBody>
+                    <tr>
+                        @for (int i = 0; i < Model.Output.Count; i++)
+                        {
+                            <td>@Model.Output[i].ToString()</td>
+                        }
+                    </tr>
+                </tBody>
+            </table>
+
+
+        </div>
+
+
+
+       @*<table class="table table-striped justifiy-content-center" style="background-color: steelblue;">
+            <thead>
+                <tr><th colspan="5">Fibonacci Series Results</th></tr>
+            </thead>
+            <tBody>
+                @for (int i = 0; i < Model.Output.Count; i += 5)
+                {
+                    <tr>
+                        <td>@Model.Output[i]</td>
+                    </tr>
+                }
+            </tBody>
+        </table>*@
+
+
+    </div> 
+</div>
+
