@@ -1,39 +1,65 @@
-﻿@model TestingAndLogging.Models.Fibonacci 
+﻿@model TestingAndLogging.Models.Fibonacci
 @{
     ViewData["Title"] = "Fibonacci";
 }
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center mt-5">
+            <div class="card blue-background p-3">
+                <div class="card-body justifiy-content-center">
+                    <p class="form-group">Enter number of Entries</p>
+                    <form class="form-check-inline" asp-controller="Home" asp-action="Fibonacci">
+                        <input type="number" asp-for="Input" placeholder="Entries" />
+                        <button type="submit" class="btn btn-primary ml-1">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+    </div>
+
+    <div class="row mt-5">
         <div class="offset-1 col-10">
+            <table class="table table-striped justifiy-content-center blue-background">
+                <thead>
+                    <tr><th colspan="5">Fibonacci Series Results</th></tr>
+                </thead>
+                <tBody>
 
 
-            <div class="card bg-primary justifiy-content-center">
-                <p id="white-text" class="form-group">Enter number of Entries</p>
-                <form class="form-group" asp-controller="Home" asp-action="Fibonacci">
-                    <input type="number" asp-for="Input" placeholder="Entries" />
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                    @{
+                        decimal num = Model.Output.Count % 5;
+                        var numRows = Math.Ceiling(num);
 
-                <br />
-
-                <table class="table table-striped justifiy-content-center" style="background-color: steelblue;">
-                    <thead>
-                        <tr><th colspan="5">Fibonacci Series Results</th></tr>
-                    </thead>
-                    <tBody>
-                        <tr>
-                            @for (int i = 0; i < Model.Output.Count; i++)
+                        if (Model.Output.Count < 5)
+                        {
+                            for (int i = 0; i < Model.Output.Count; i++)
                             {
-                                <td>@Model.Output[i].ToString()</td>
+                                <td>@Model.Output[i]</td>
                             }
-                        </tr>
+                        }
+
+                        else
+                        {
+                            for (int i = 0; i < numRows; i ++)
+                            {
+                                <tr>
+                                    <td>@Model.Output[i]</td>
+                                    <td>@Model.Output[i + 1]</td>
+                                    <td>@Model.Output[i + 2]</td>
+                                    <td>@Model.Output[i + 3]</td>
+                                    <td>@Model.Output[i + 4]</td>
+                                </tr>
+                            }
+                        }
+                    }
+
+
+
+
+                    </tr>
+
+
                     </tBody>
                 </table>
             </div>
-
-
         </div>
-    </div>
-</div>
-    

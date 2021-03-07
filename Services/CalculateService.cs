@@ -8,16 +8,16 @@ namespace TestingAndLogging.Services
 {
     public class CalculateService : ICalculateService
     {
-        public IEnumerable<int> CalculateFibonacci(Fibonacci model)
+        public List<string> CalculateFibonacci(Fibonacci model)
         {
-            List<int> returnList = new List<int>(model.Input);
+            List<string> returnList = new List<string>();
             int num1 = 0;
             int num2 = 1;
             int num3;
 
             //Put the first two numbers of the fib series into the array
-            returnList.Add(num1);
-            returnList.Add(num2);
+            returnList.Add($"{num1}");
+            returnList.Add($"{num2}");
 
             //Get the subsequent numbers after the first two numbers in the series and put 
             //them into a List of ints 
@@ -28,19 +28,21 @@ namespace TestingAndLogging.Services
                 num1 = num2;
                 num2 = num3;
 
-                returnList.Add(num3);
+                returnList.Add($"{num3}");
             }
             return returnList;
         }
 
-        public void CalculatePythagoreanTheorem(Pythagorean model)
+        public double CalculatePythagoreanTheorem(Pythagorean model)
         {
             model.InputA = Convert.ToDouble(model.InputA);
             model.InputB = Convert.ToDouble(model.InputB);
 
             double cSquared = model.InputA * model.InputA + model.InputB * model.InputB;
+            double output = Math.Round(Math.Sqrt(cSquared), 2);
 
-            model.OutputC = Math.Sqrt(cSquared);
+            //model.OutputC = Math.Round( Math.Sqrt(cSquared), 2 );
+            return output;
         }
 
         public void ConvertInputStringToListOfDoubles(StandardDeviation model)
@@ -53,12 +55,16 @@ namespace TestingAndLogging.Services
             }
         }
 
-        public void CalculateStandardDeviation(StandardDeviation model)
+        public double CalculateStandardDeviation(StandardDeviation model)
         {
-            double avg = model.InputNumbers.Average();
-            double sum = model.InputNumbers.Sum(v => (v - avg) * (v - avg));
+            double avg = Math.Round(model.InputNumbers.Average(), 2);
+            double sum = Math.Round(model.InputNumbers.Sum(v => (v - avg) * (v - avg)), 2);
             double denominator = model.InputNumbers.Count - 1;
-            model.Output = denominator > 0.0 ? Math.Sqrt(sum / denominator) : -1;
+            double output = Math.Round(denominator > 0.0 ? Math.Sqrt(sum / denominator) : -1, 2);
+
+            //As long as the denominator does equal zero, perform sum/denominator and square root it
+            return output;
+                
         }
     }
 }

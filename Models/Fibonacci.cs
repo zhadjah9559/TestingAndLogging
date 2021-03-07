@@ -8,6 +8,6 @@ namespace TestingAndLogging.Models
     public class Fibonacci
     {
         public int Input { get; set; }
-        public List<int> Output { get; set; } = new List<int>();
+        public List<string> Output { get; set; } = new List<string>();
     }
 }

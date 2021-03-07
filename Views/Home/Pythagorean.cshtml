@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="offset-2 col-8">
-        <div class="card bg-primary">
+        <div class="card blue-background p-4">
             <form asp-controller="Home" asp-action="Pythagorean">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -24,7 +24,17 @@
 
                 <br />
 
-                <p>@Model.OutputC</p>
+                <div class="row justify-content-center">
+                    @if (Model.InputA == 0 && Model.InputB == 0)
+                    {
+                        <p>  A² + B² = C²  </p>
+                    }
+                    else
+                    {
+                        <p> (@Model.InputA)² + (@Model.InputB)²  =  @Model.OutputC</p>
+                    }
+                </div>
+
             </form>
         </div>
     </div>

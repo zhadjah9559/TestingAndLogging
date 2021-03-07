@@ -7,6 +7,9 @@ namespace TestingAndLogging.Models
 {
     public class StandardDeviation
     {
+
+        //^\s*[\+-]?(\d*\.?\d{2}?)
+
         public string InputString { get; set; }
         public List<double> InputNumbers { get; set; } = new List<double>();
 

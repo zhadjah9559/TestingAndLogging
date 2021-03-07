@@ -23,7 +23,9 @@ namespace TestingAndLogging.Controllers
 
         public IActionResult Index()
         {
-            
+            _logger.LogInformation("Writing to log");
+            _logger.LogError("Error from Serlog sample");
+
             return View();
         }
 
@@ -37,7 +39,7 @@ namespace TestingAndLogging.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Fibonacci(Fibonacci model)
         {
-            model.Output = (List<int>) _calculateService.CalculateFibonacci(model);
+            model.Output = (List<string>) _calculateService.CalculateFibonacci(model);
             return View(model);
         }
 
@@ -51,7 +53,7 @@ namespace TestingAndLogging.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Pythagorean(Pythagorean model)
         {
-            _calculateService.CalculatePythagoreanTheorem(model);
+            model.OutputC = _calculateService.CalculatePythagoreanTheorem(model);
             return View(model);
         }
 
@@ -66,7 +68,7 @@ namespace TestingAndLogging.Controllers
         public IActionResult StandardDeviation(StandardDeviation model)
         {
             _calculateService.ConvertInputStringToListOfDoubles(model);
-            _calculateService.CalculateStandardDeviation(model);
+            model.Output = _calculateService.CalculateStandardDeviation(model);
             return View(model);
         }
 
