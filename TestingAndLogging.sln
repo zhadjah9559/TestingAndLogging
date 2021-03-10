@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingAndLogging", "TestingAndLogging.csproj", "{08632203-6A6F-46C4-A942-184FEDD2822C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculateServiceXUnitTest", "..\CalculateServiceXUnitTest\CalculateServiceXUnitTest.csproj", "{AC45FF4D-7110-4254-9F19-AA5DD249498E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculateServiceXUnitTest", "..\CalculateServiceXUnitTest\CalculateServiceXUnitTest.csproj", "{AC45FF4D-7110-4254-9F19-AA5DD249498E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

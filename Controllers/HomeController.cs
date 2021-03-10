@@ -23,8 +23,7 @@ namespace TestingAndLogging.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation("Writing to log");
-            _logger.LogError("Error from Serlog sample");
+            _logger.LogInformation("BEGINNING PROGRAM");
 
             return View();
         }

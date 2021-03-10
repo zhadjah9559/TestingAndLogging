@@ -5,7 +5,9 @@
 
 <div class="row">
     <div class="offset-2 col-8">
-        <div class="card blue-background p-4">
+
+                                              @*fix IIS and linter issues so you are not using html to style the page*@
+        <div class="card blue-background p-4" style="background-color: #ADE1FA;">
             <form asp-controller="Home" asp-action="Pythagorean">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">

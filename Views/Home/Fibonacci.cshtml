@@ -5,7 +5,9 @@
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-            <div class="card blue-background p-3">
+
+                                  @*fix IIS and linter issues so you are not using html to style the page*@
+            <div class="card p-3" style="background-color: #ADE1FA;">
                 <div class="card-body justifiy-content-center">
                     <p class="form-group">Enter number of Entries</p>
                     <form class="form-check-inline" asp-controller="Home" asp-action="Fibonacci">
@@ -19,47 +21,20 @@
 
     <div class="row mt-5">
         <div class="offset-1 col-10">
-            <table class="table table-striped justifiy-content-center blue-background">
+            <table class="table table-striped justifiy-content-center" style="background-color: #ADE1FA;">
                 <thead>
                     <tr><th colspan="5">Fibonacci Series Results</th></tr>
                 </thead>
-                <tBody>
+                <tBody>                    
 
-
-                    @{
-                        decimal num = Model.Output.Count % 5;
-                        var numRows = Math.Ceiling(num);
-
-                        if (Model.Output.Count < 5)
+                    <tr>
+                        @for (int i = 0; i < Model.Output.Count; i++)
                         {
-                            for (int i = 0; i < Model.Output.Count; i++)
-                            {
-                                <td>@Model.Output[i]</td>
-                            }
+                            <td>@Model.Output[i]</td>
                         }
-
-                        else
-                        {
-                            for (int i = 0; i < numRows; i ++)
-                            {
-                                <tr>
-                                    <td>@Model.Output[i]</td>
-                                    <td>@Model.Output[i + 1]</td>
-                                    <td>@Model.Output[i + 2]</td>
-                                    <td>@Model.Output[i + 3]</td>
-                                    <td>@Model.Output[i + 4]</td>
-                                </tr>
-                            }
-                        }
-                    }
-
-
-
-
                     </tr>
-
-
-                    </tBody>
-                </table>
-            </div>
+                                        
+                </tBody>
+            </table>
         </div>
+    </div>

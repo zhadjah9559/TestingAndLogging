@@ -3,13 +3,17 @@
     ViewData["Title"] = "StandardDeviation";
 }
 
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
 
 <div class="row">
     <div class="offset-2 col-8">
 
         <p class="justify-content-center">Please provide numbers separated by commas to calculate the standard deviation</p>
 
-        <div class="card blue-background">
+                              @*fix IIS and linter issues so you are not using html to style the page*@
+        <div class="card p-3" style="background-color: #ADE1FA;">
             <form class="p-xl-5" asp-controller="Home" asp-action="StandardDeviation">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -21,21 +25,11 @@
 
                 <br />
 
-
                 <div class="row justify-content-center">
-                    @if (Model.Output == -1)
-                    {
-                        <p style="color:red"> Cannot Evaluate only one number. </p>
-                    }
-                    else
-                    {
-                        <p> @Model.Output </p>
-                    }
+
+                    <p> @Model.Output </p>
+
                 </div>
-
-
-
-
             </form>
         </div>
     </div>

@@ -8,8 +8,8 @@
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 blue-background">
+    <header>                                                                                                 @*fix IIS and linter issues so you are not using html to style the page*@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#ADE1FA;">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TDD and Logging Demo</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -18,14 +18,14 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        
+
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Fibonacci">Fibonacci</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Pythagorean">Pythag's Theorem</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Pythagorean">Pythagorean Theorem</a>
                         </li>
 
                         <li class="nav-item">
