@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <pre class="line-numbers"><code class="language-csharp">
+    namespace CalculateServiceXUnitTest
+    {
+        public class CalculateServiceTest
+        {
+            [Theory]
+            [InlineData(8)]
+            [InlineData(33)]
+            public void AssertFibonacciListNotNull(int numOfEntries)
+            {
+                //Arrange
+                Fibonacci model = new Fibonacci();
+                model.Input = numOfEntries;
+
+                //Act
+                var fibonacciList = new CalculateService().CalculateFibonacci(model);
+
+                //Assert
+                fibonacciList.Should().NotBeEmpty().And.NotBeNull().And.HaveCount(numOfEntries).And.AllBeOfType&lt;string&gt;();
+            }
+
+            [Theory]
+            [InlineData(4.5, 2.3, 5.05)]
+            [InlineData(17.11, 10.13, 19.88)]
+            public void AssertPythagoreanCalculation(double numA, double numB, double expected)
+            {
+                //Arrange
+                Pythagorean model = new Pythagorean();
+                var pythagoreanValue = new CalculateService();
+                model.InputA = numA;
+                model.InputB = numB;
+
+                //Act
+                var cSquared = pythagoreanValue.CalculatePythagoreanTheorem(model);
+
+                //Assert
+                cSquared.Should().BeGreaterThan(0).And.Equals(expected);
+            }
+
+            [Fact]
+            public void AssertPythagoreanCalculationFails()
+            {
+                //Arrange
+                Pythagorean model = new Pythagorean();
+                var standardDeviationValue = new CalculateService();
+                model.InputA = 3;
+                model.InputB = 6;
+                double incorrectAnswer = 3.14;
+
+                //Act
+                double result = standardDeviationValue.CalculatePythagoreanTheorem(model);
+
+                //Assert
+                result.Should().BeGreaterThan(0).And.Be(incorrectAnswer);
+            }
+
+            [Theory]
+            [InlineData(33.27, 44.11, 36, 30.99, 5.72)]
+            [InlineData(5, 6.11, 3.14, 2, 1.84)]
+            [InlineData(4.4, 5.5, 9.11, 3.14, 2.57)]
+            public void AssertStandardDeviationCalculation(double input1, double input2, double input3, double input4, double expected)
+            {
+                //Arrange
+                StandardDeviation model = new StandardDeviation();
+                var standardDeviationValue = new CalculateService();
+                model.InputNumbers.Add(input1);
+                model.InputNumbers.Add(input2);
+                model.InputNumbers.Add(input3);
+                model.InputNumbers.Add(input4);
+
+                //Act
+                double result = standardDeviationValue.CalculateStandardDeviation(model);
+
+                //Assert
+                result.Should().BeGreaterThan(0).And.Be(expected);
+            }
+
+            [Fact]
+            public void AssertStandardDeviationCalculationFails()
+            {
+                //Arrange
+                StandardDeviation model = new StandardDeviation();
+                var standardDeviationValue = new CalculateService();
+                model.InputNumbers.Add(9);
+                double incorrectAnswer = 3.14;
+
+                //Act
+                double result = standardDeviationValue.CalculateStandardDeviation(model);
+
+                //Assert
+                result.Should().BeGreaterThan(0).And.Be(incorrectAnswer);
+            }
+        }
+    }
+</code></pre>

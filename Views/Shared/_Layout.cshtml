@@ -6,9 +6,11 @@
     <title>@ViewData["Title"] - TestingAndLogging</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/prism.css" rel="stylesheet" />
 </head>
 <body>
-    <header>                                                                                                 @*fix IIS and linter issues so you are not using html to style the page*@
+    <header>
+        @*fix IIS and linter issues so you are not using html to style the page*@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#ADE1FA;">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TDD and Logging Demo</a>
@@ -32,6 +34,14 @@
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="StandardDeviation">Standard Deviation</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="UnitTests">Unit Tests</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="http://localhost:5341/" target="_blank" >Check Logs</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -44,11 +54,11 @@
     </div>
 
     <footer class="border-top footer text-muted">
-   
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/prism.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
