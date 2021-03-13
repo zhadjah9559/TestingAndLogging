@@ -43,6 +43,11 @@ namespace TestingAndLogging.Services
                 returnList.RemoveAt(1);
             }
 
+            else if(model.Input == 2)
+            {
+                return returnList;
+            }
+
             //Get the subsequent numbers after the first two numbers in the series and put 
             //them into a List of ints 
             else if (model.Input > 2)
